@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Atluri Chaitanya, Computer Science student and aspiring software developer.">
+    <title>Atluri Chaitanya | Portfolio</title>
+
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        :root {
+            --bg: #0b1120;
+            --card: #151f32;
+            --primary: #8b5cf6;
+            --secondary: #38bdf8;
+            --text: #f1f5f9;
+            --muted: #a3b1c6;
+            --border: rgba(255,255,255,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            background: rgba(11,17,32,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 85% 20%, #31205b 0, transparent 35%),
+                radial-gradient(circle at 10% 80%, #123b52 0, transparent 35%);
+        }
+
+        .hero-content {
+            padding: 90px 0;
+        }
+
+        .hero-content .welcome {
+            color: var(--secondary);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero h3 {
+            color: var(--muted);
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 650px;
+            margin: 20px 0 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #7040d5;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: var(--bg);
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-card {
+            background: var(--card);
+            padding: 35px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+        }
+
+        .about-card p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-links a {
+            color: var(--secondary);
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== EDUCATION ===== */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 13px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .highlight {
+            color: #c4b5fd !important;
+            font-weight: bold;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background: #26344c;
+            border: 1px solid var(--border);
+            color: #ddd6fe;
+            padding: 8px 15px;
+            border-radius: 7px;
+            font-size: 14px;
+        }
+
+        /* ===== PROJECTS ===== */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(139,92,246,0.12);
+        }
+
+        .project-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-stack span {
+            background: #293650;
+            color: #c4b5fd;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        /* ===== CERTIFICATIONS ===== */
+        .cert-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 18px;
+            border-radius: 10px;
+            color: var(--muted);
+            transition: 0.3s;
+        }
+
+        .cert-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .cert-icon {
+            color: var(--secondary);
+            font-size: 20px;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-box {
+            background: linear-gradient(135deg, #282052, #15364a);
+            text-align: center;
+            padding: 40px 25px;
+            border-radius: 15px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin: 15px 0 25px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #080d18;
+            text-align: center;
+            padding: 25px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        footer span {
+            color: var(--primary);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 0;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .education-grid,
+            .skills-container,
+            .project-grid,
+            .cert-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-content {
+                padding: 75px 0;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+
+            .about-card {
+                padding: 23px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container navbar">
+            <div class="logo">Chaitanya.</div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero" id="home">
+        <div class="container hero-content">
+
+            <div class="welcome">WELCOME TO MY PORTFOLIO</div>
+
+            <h1>Hi, I'm <span>ATLURI CHAITANYA</span></h1>
+
+            <h3>Computer Science Student | Aspiring Software Developer</h3>
+
+            <p>
+                Passionate about building scalable software,
+                exploring new technologies, and solving real-world
+                problems through innovative solutions.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    View My Projects
+                </a>
+
+                <a href="#contact" class="btn btn-outline">
+                    Contact Me
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ABOUT SECTION -->
+        <section class="section" id="about">
+            <div class="container">
+
+                <h2 class="section-title">About <span>Me</span></h2>
+
+                <div class="about-card">
+
+                    <p>
+                        I'm a curious and motivated Computer Science
+                        student with a passion for building scalable
+                        software, learning new technologies, and
+                        solving real-world problems.
+                    </p>
+
+                    <p>
+                        Currently seeking internship opportunities
+                        to apply my skills in a real-world environment
+                        and contribute to impactful software solutions.
+                    </p>
+
+                    <div class="contact-links">
+
+                        <a href="mailto:atluruchaitanya143@gmail.com">
+                            ✉ Email Me
+                        </a>
+
+                        <a href="tel:+919666661624">
+                            ☎ +91 9666661624
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/atluri-chaitanya-499440344/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            LinkedIn Profile ↗
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section class="section" id="education">
+            <div class="container">
+
+                <h2 class="section-title">My <span>Education</span></h2>
+
+                <div class="education-grid">
+
+                    <div class="card">
+                        <h3>B.Tech</h3>
+                        <p><strong>Mohan Babu University</strong></p>
+                        <p>2023 – Present</p>
+                        <p class="highlight">CGPA: 9.40</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Intermediate (XII)</h3>
+                        <p>
+                            Rajiv Gandhi University of
+                            Knowledge Technologies
+                        </p>
+                        <p>2021 – 2023</p>
+                        <p class="highlight">Percentage: 89.9%</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>SSC (X)</h3>
+                        <p>Shantiniketan High School</p>
+                        <p>2021</p>
+                        <p class="highlight">Percentage: 95.4%</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section class="section" id="skills">
+            <div class="container">
+
+                <h2 class="section-title">My <span>Skills</span></h2>
+
+                <div class="skills-container">
+
+                    <div class="card skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill">Java</span>
+                            <span class="skill">Python (Basic)</span>
+                        </div>
+                    </div>
+
+                    <div class="card skill-category">
+                        <h3>Web Technologies</h3>
+                        <div class="skill-list">
+                            <span class="skill">HTML5</span>
+                            <span class="skill">CSS3</span>
+                            <span class="skill">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="card skill-category">
+                        <h3>Database</h3>
+                        <div class="skill-list">
+                            <span class="skill">SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="card skill-category">
+                        <h3>Core Concepts</h3>
+                        <div class="skill-list">
+                            <span class="skill">Data Structures</span>
+                            <span class="skill">Problem Solving</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section class="section" id="projects">
+            <div class="container">
+
+                <h2 class="section-title">My <span>Projects</span></h2>
+
+                <div class="project-grid">
+
+                    <article class="project-card">
+
+                        <div class="project-icon">🍱</div>
+
+                        <h3>Food Donation Management Website</h3>
+
+                        <p>
+                            Developed a web-based platform that enables
+                            users to post details about surplus food
+                            from events. Volunteers can collect and
+                            distribute surplus food to orphanages,
+                            old-age homes, and people in need.
+                        </p>
+
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+
+                    </article>
+
+                    <article class="project-card">
+
+                        <div class="project-icon">💻</div>
+
+                        <h3>Personal Portfolio Website</h3>
+
+                        <p>
+                            Developed a personal portfolio website
+                            showcasing student information, education,
+                            technical skills, projects, and
+                            certifications using web technologies.
+                        </p>
+
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATES SECTION -->
+        <section class="section" id="certificates">
+            <div class="container">
+
+                <h2 class="section-title">
+                    My <span>Certifications</span>
+                </h2>
+
+                <div class="cert-list">
+
+                    <div class="cert-item">
+                        <span class="cert-icon">🏆</span>
+                        <p>
+                            AICTE Internship Certificate –
+                            Front End Web Development
+                        </p>
+                    </div>
+
+                    <div class="cert-item">
+                        <span class="cert-icon">🏆</span>
+                        <p>
+                            STEP Certificate –
+                            Grade 8.5 (Listening, Speaking,
+                            Reading and Writing)
+                        </p>
+                    </div>
+
+                    <div class="cert-item">
+                        <span class="cert-icon">🏆</span>
+                        <p>
+                            L&T Career Pathway –
+                            Cloud Data Engineer
+                        </p>
+                    </div>
+
+                    <div class="cert-item">
+                        <span class="cert-icon">🏆</span>
+                        <p>
+                            ServiceNow Virtual Internship Program –
+                            ServiceNow, AICTE & SmartBridge
+                        </p>
+                    </div>
+
+                    <div class="cert-item">
+                        <span class="cert-icon">🏆</span>
+                        <p>
+                            Apex Planet Internship Certificate –
+                            Web Development with HTML, CSS and JavaScript
+                        </p>
+                    </div>
+
+                    <div class="cert-item">
+                        <span class="cert-icon">🏆</span>
+                        <p>
+                            Adobe Hackathon –
+                            Certificate of Participation
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="section" id="contact">
+            <div class="container">
+
+                <h2 class="section-title">
+                    Contact <span>Me</span>
+                </h2>
+
+                <div class="contact-box">
+
+                    <h2>Let's Connect!</h2>
+
+                    <p>
+                        I'm currently looking for internship
+                        opportunities and exciting projects.
+                        Feel free to reach out!
+                    </p>
+
+                    <a href="mailto:atluruchaitanya143@gmail.com"
+                       class="btn btn-primary">
+                        Send Me an Email
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © <span id="year"></span>
+            Atluri Chaitanya. All Rights Reserved.
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
